@@ -84,9 +84,21 @@
   users.users.enzo = {
     isNormalUser = true;
     description = "enzo";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
-    #  thunderbird
+   	  wget
+    	git
+    	zed-editor
+      rustup
+      gcc
+      jdk
+      eclipses.eclipse-java
+      nixd
+      nil
+      uv
+      discord
+      quartus-prime-lite
+      nix-ld
     ];
   };
 
@@ -107,17 +119,12 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-   	  wget
-    	git
-    	zed-editor
-      rustup
-      jdk
-      eclipses.eclipse-java
-      nixd
-      nil
-      uv
-      discord
-      nix-ld
+    gnome-tweaks
+    gnomeExtensions.tweaks-in-system-menu
+    gnomeExtensions.appindicator
+    gnomeExtensions.dash-to-dock
+    gnomeExtensions.caffeine
+    tela-circle-icon-theme
   ];
 
   programs.nix-ld.enable = true;
@@ -152,4 +159,5 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.11"; # Did you read the comment?
 
+  virtualisation.docker.enable = true;
 }
